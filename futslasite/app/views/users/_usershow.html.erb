@@ -1,0 +1,25 @@
+<% @user = User.new unless @user %>　
+<section>
+    <span class="label">プロフィール画像</span>
+    <h3 class="user-info">
+      <%= image_for(@user) %>
+    </h3>
+  </section>
+
+  <section>
+    <span class="label">ユーザー</span>
+    <h3 class="user-info"><%= @user.name %></h3>
+  </section>
+  
+  <section>
+    <span class="label">メールアドレス</span>
+    <h3 class="user-info"><%= @user.email %></h3>
+  </section>
+  
+  <!-- if文をcurrent_user?ヘルパーを用いて書き換えてください -->
+  <% if current_user?(@user) %>
+  <section>
+  <small><%= link_to 'プロフィールを編集', edit_user_path(@user) %></small>
+  <% else %>
+ </section>
+ <% end %>

@@ -1,0 +1,14 @@
+<h1 class="heading">ユーザー一覧</h1>
+
+
+<ul class="user-list">
+  <% @users.each do |user| %>
+    <li>
+      <!-- 以下の行を削除し、image_forヘルパーを呼び出して各ユーザーの画像を表示してください -->
+      <%= image_for(user) %>
+      <%= link_to user.name, user %> |
+      <%= user.email %>
+    </li>
+  <% end %>
+  <%= link_to '新規ユーザー作成', new_user_registration_path, class: "btn add-user-btn" %>
+</ul>

@@ -1,0 +1,14 @@
+<li>
+  <!-- image_forヘルパーを用いて、このnoteを投稿したユーザーの画像を表示してください -->
+  <%= image_for(event.user) %>
+  <span class="content">
+    <%= link_to event.name, event_path(event.id) %>
+  </span>
+
+  <span class="user-name">
+    開始：<%= event.start_time %> 
+  </span></br>
+  <span>
+    終了：<%= event.end_time %>
+  </span>
+</li>

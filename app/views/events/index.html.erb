@@ -1,0 +1,11 @@
+<ul class="notes">
+<h1>検索結果</h1>
+
+<%= search_form_for @q do |f| %>
+
+<% end %>
+
+<% @events.each do |event| %>
+<%= render 'events/event', event: event %>
+<% end %>
+</ul>

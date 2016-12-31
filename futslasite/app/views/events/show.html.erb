@@ -1,0 +1,41 @@
+<!-- PayPal Logo -->
+<table border="0" cellpadding="10" cellspacing="0" align="left">
+<tr><td align="left"></td></tr>
+<tr>
+<td align="left">
+<img src="https://www.paypal.jp/jp/mms2/service/logos-buttons/images/PM_228_54_2.png" border="0" alt="その他のオプション"></a></td>
+</tr></table><!-- PayPal Logo -->
+<br clear="left">
+
+  <h2>イベント名</h2>
+  <p><%= @event.name %></p>
+  <%= image_for(@event) %>
+  <h2>場所</h2>
+  <p><%= @event.place %></p>
+  <h2>開始時間</h2>
+  <p><%= @event.start_time %></p>
+  <h2>終了時間</h2>
+  <p><%= @event.end_time %></p>
+  <h2>コメント</h2>
+  <p><%= @event.content %></p>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="ZV73H83RLA2QQ">
+<table>
+<tr><td><input type="hidden" name="on0" value="参加費用">参加費用</td></tr><tr><td><select name="os0">
+	<option value="男性">男性 ¥5 JPY</option>
+	<option value="女性">女性 ¥2 JPY</option>
+</select> </td></tr>
+</table>
+<input type="hidden" name="currency_code" value="JPY">
+<input type="image" src="https://www.paypalobjects.com/ja_JP/JP/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - オンラインでより安全・簡単にお支払い">
+<img alt="" border="0" src="https://www.paypalobjects.com/ja_JP/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+  <br clear="left">
+<!-- 以下の2つのリンクをif文で囲み、current_user?ヘルパーで条件を指定してください-->
+<% if current_user?(@event.user) %>
+  <%= link_to "編集", edit_event_path(@event.id), class: "btn edit-btn" %>
+  <%= link_to "削除", event_path(@event.id), method: "delete", class: "btn destroy-btn", "data-confirm" => "本当に削除しますか？" %>
+<% end %>
